@@ -4,7 +4,6 @@ import {
   ArrowsUpDownIcon,
   HomeIcon,
   UserIcon,
-  QuestionMarkCircleIcon,
 } from "@heroicons/react/24/outline";
 import { Link, Outlet } from "@tanstack/react-router";
 import { ToggleThemeButton } from "../components/Button";
@@ -22,26 +21,11 @@ export function Shell() {
       <header className="w-full py-4 !text-stone-200 ">
         <nav className="flex items-center justify-between w-full">
           <div className="flex items-center justify-between ">
-            {/* <img
-              src={entraLogo}
-              className="w-8 mr-4 drop-shadow-md"
-              alt="Entra logo"
-            />
-            <span className="text-sm text-stone-400">React MSAL Demo</span> */}
-            <ul className="flex flex-wrap p-0 mr-1 space-x-4 text-sm list-none  ">
+            <ul className="flex flex-wrap p-0 mr-1 space-x-4 text-sm list-none ">
               <li className="after:content-['|'] after:ml-4  after:text-gray-500 flex items-center  ">
                 <Link to="/" className="flex items-center gap-3 no-underline ">
                   <HomeIcon className="size-6" />
                   <span className="hidden sm:inline ">Welcome</span>
-                </Link>
-              </li>
-              <li className="after:content-['|'] after:ml-4  after:text-gray-500 flex items-center ">
-                <Link
-                  to="/whymsal"
-                  className="flex items-center gap-3 no-underline "
-                >
-                  <QuestionMarkCircleIcon className="size-6" />
-                  <span className="hidden sm:inline">Why MSAL?</span>
                 </Link>
               </li>
               <li className="after:content-['|'] after:ml-4 after:text-gray-500 flex items-center">

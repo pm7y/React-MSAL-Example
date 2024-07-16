@@ -3,23 +3,20 @@ import Claims from "./features/Claims.tsx";
 import MsGraph from "./features/MsGraph.tsx";
 import { Shell } from "./features/Shell.tsx";
 import Index from "./features/Welcome.tsx";
-import WhyMsal from "./features/WhyMsal.tsx";
+
+const rootRoute = createRootRoute({
+  component: () => {
+    console.debug("rootRoute render!");
+    return <Shell />;
+  },
+});
 
 export function getRoutes() {
-  const rootRoute = createRootRoute({
-    component: () => <Shell />,
-  });
-
   const routes = [
     createRoute({
       getParentRoute: () => rootRoute,
       path: "/",
       component: () => <Index />,
-    }),
-    createRoute({
-      getParentRoute: () => rootRoute,
-      path: "/whymsal",
-      component: () => <WhyMsal />,
     }),
     createRoute({
       getParentRoute: () => rootRoute,

@@ -4,6 +4,7 @@ import {
   useAccount,
 } from "@azure/msal-react";
 import { Page } from "./Page";
+import { CodeBracketIcon, Cog6ToothIcon } from "@heroicons/react/24/outline";
 
 function Welcome() {
   const account = useAccount();
@@ -15,13 +16,13 @@ function Welcome() {
         <>
           <UnauthenticatedTemplate>
             <h1>
-              Welcome <span className="ml-4 drop-shadow-md">👋</span>
+              Welcome <span className="ml-2 drop-shadow-md">👋</span>
             </h1>
           </UnauthenticatedTemplate>
           <AuthenticatedTemplate>
             <h1>
-              Hey, {userFirstName}{" "}
-              <span className="ml-4 drop-shadow-md">👋</span>
+              Hey, {userFirstName}
+              <span className="ml-2 drop-shadow-md">👋</span>
             </h1>
           </AuthenticatedTemplate>
         </>
@@ -34,12 +35,70 @@ function Welcome() {
             (MSAL) for authenticating users via Microsoft Entra ID.
           </p>
           <p>
-            This project starts with a React/TypeScript app created using Vite.
-            We've kept the app straightforward, avoiding significant changes to
-            the default Vite template. This ensures the focus remains on the
-            primary goal: demonstrating seamless integration with MSAL.
+            Broadly speaking there are a couple of different ways of
+            authenticating users in a React/Typescript SPA using Entra Id. One
+            way is to delegate the authentication to the frontend using MSAL.
+            Another way would be to delegate the responsibility to your backend
+            API (e.g. ASP.NET). There are pros and cons to each approach and
+            which one you choose will depend on your specific requirements.
           </p>
-          <h2>Next, you could... </h2>
+          <p>
+            This demo site is solely focused on exploring the first way i.e. how
+            to authenticate via the frontend using MSAL. Here are a few of the
+            things you might consider when choosing one way or the other.
+          </p>
+          <div className="sm:flex sm:justify-between sm:gap-8 text-sm mt-8">
+            <div className="dark:bg-zinc-800 bg-stone-200 rounded-xl pt-1 pb-8 px-4 sm:w-1/2">
+              <div className="flex justify-center gap-4 align-middle">
+                <CodeBracketIcon className="w-12" />
+                <h2>SPA authentication</h2>
+              </div>
+              <ul className="list-disc  pl-8 ">
+                <li className="pb-4">
+                  <b>Seamless User Experience:</b> You need a smooth user
+                  experience with fewer redirects, making the authentication
+                  process feel more integrated and less disruptive.
+                </li>
+                <li className="pb-4">
+                  <b>Direct Token Management:</b> You prefer the frontend to
+                  directly handle tokens, managing authentication flows and
+                  token refresh within the SPA.
+                </li>
+                <li>
+                  <b>Simplified Backend:</b> Your application benefits from a
+                  stateless backend, reducing the complexity of server-side
+                  session management.
+                </li>
+              </ul>
+            </div>
+            <div className="dark:bg-zinc-800 bg-stone-200 rounded-xl pt-1 pb-8 px-4 sm:w-1/2 sm:mt-0 mt-8">
+              <div className="flex justify-center gap-4 align-middle">
+                <Cog6ToothIcon className="w-12" />
+                <h2>API authentication</h2>
+              </div>
+              <ul className="list-disc pl-8">
+                <li className="pb-4">
+                  <b>Centralised Security Control:</b> You prefer centralised
+                  control over security and session management, keeping
+                  sensitive authentication logic and token handling on the
+                  server side.
+                </li>
+                <li className="pb-4">
+                  <b>Simplified Frontend Development:</b> You aim to simplify
+                  frontend development by offloading authentication complexity
+                  to the backend, allowing the frontend to focus solely on user
+                  interface and user experience.
+                </li>
+                <li className="pb-4">
+                  <b>Enhanced Security:</b> Storing and managing tokens on the
+                  server side can reduce the risk of token theft or misuse in
+                  the client environment, providing an additional layer of
+                  security.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <h2>What Now?</h2>
           <ul className="list-disc  pl-8">
             <li>
               Take a look at{" "}

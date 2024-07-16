@@ -21,7 +21,8 @@ function MsGraph() {
             <a
               href="https://developer.microsoft.com/en-us/graph/graph-explorer"
               rel="noopener"
-              target="_blank">
+              target="_blank"
+            >
               Microsoft Graph API
             </a>{" "}
             to retrieve some profile data about the user including their photo

@@ -14,18 +14,18 @@ export function LoginButton() {
   const accounts = instance.getAllAccounts();
   console.dir("accounts: ", accounts);
   const account = accounts ? accounts[0] : null;
+  const currentMsalOperationInProgress = inProgress;
 
   return (
     <Button
-      disabled={inProgress !== InteractionStatus.None}
+      disabled={currentMsalOperationInProgress !== InteractionStatus.None}
       onClick={async () => {
         try {
           console.debug("Attempting ssoSilent: ", account);
           const loginResponse = await instance.ssoSilent({
             ...loginRequest,
             account: account,
-            // loginHint: account?.username,
-            prompt: "none",
+            loginHint: account?.username,
           } as SsoSilentRequest);
 
           loginResponse?.account &&
@@ -41,8 +41,8 @@ export function LoginButton() {
               await instance.loginRedirect({
                 ...loginRequest,
                 account,
-                // loginHint: account?.username,
-                prompt: account?.username ? "none" : "select_account",
+                loginHint: account?.username,
+                prompt: account?.username ? "login" : "select_account",
               } as RedirectRequest);
             } catch (redirectError) {
               // TODO handle this error

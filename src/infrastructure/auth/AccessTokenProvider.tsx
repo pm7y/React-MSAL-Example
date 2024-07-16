@@ -1,5 +1,6 @@
 import {
   InteractionRequiredAuthError,
+  InteractionStatus,
   RedirectRequest,
 } from "@azure/msal-browser";
 import { useMsal } from "@azure/msal-react";
@@ -11,13 +12,14 @@ let pageLoad = true;
 export const AccessTokenContext = createContext<string | null>(null);
 
 export const AccessTokenProvider = ({ children }: { children: ReactNode }) => {
-  const { instance } = useMsal();
+  const { instance, inProgress } = useMsal();
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const accounts = instance.getAllAccounts();
   const account = accounts ? accounts[0] : null;
+  const currentMsalOperationInProgress = inProgress;
 
   useEffect(() => {
-    if (account) {
+    if (account && currentMsalOperationInProgress === InteractionStatus.None) {
       instance
         // First, we'll attempt to silently acquire the token by checking the cache to see if a non-expired access token exists that we can use or refresh.
         .acquireTokenSilent({
@@ -32,6 +34,11 @@ export const AccessTokenProvider = ({ children }: { children: ReactNode }) => {
           setAccessToken(response.accessToken);
         })
         .catch(async (silentError) => {
+          console.error(
+            "acquireTokenSilent silentError0 inProgress",
+            silentError,
+            currentMsalOperationInProgress
+          );
           if (silentError instanceof InteractionRequiredAuthError) {
             // Fallback to alternate method when silent call fails.
             try {
@@ -39,21 +46,22 @@ export const AccessTokenProvider = ({ children }: { children: ReactNode }) => {
               await instance.acquireTokenRedirect({
                 ...loginRequest,
                 account,
-                prompt: account?.username ? "none" : "select_account",
+                loginHint: account?.username,
+                //prompt: account?.username ? "login" : "select_account",
               } as RedirectRequest);
             } catch (redirectError) {
               // TODO handle this error
-              console.error("acquireTokenRedirect error", redirectError);
+              console.error("acquireTokenRedirect error1", redirectError);
               throw redirectError;
             }
           } else {
             // TODO handle this error
-            console.error("acquireTokenSilent error", silentError);
+            console.error("acquireTokenSilent error2", silentError);
             throw silentError;
           }
         });
     }
-  }, [instance, account]);
+  }, [account, instance, currentMsalOperationInProgress]);
 
   return (
     <AccessTokenContext.Provider value={accessToken}>

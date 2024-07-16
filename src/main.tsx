@@ -1,4 +1,5 @@
 import { createStandardPublicClientApplication } from "@azure/msal-browser";
+import "@fontsource-variable/open-sans";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -8,15 +9,12 @@ import ErrorBoundary from "./infrastructure/ErrorBoundary.tsx";
 import { MsalWrapper } from "./infrastructure/auth/MsalWrapper.tsx";
 import { msalConfig } from "./infrastructure/auth/authConfig.ts";
 import { getRoutes } from "./routes.tsx";
-// import "@fontsource-variable/open-sans/wdth-italic.css";
-// import "@fontsource-variable/open-sans/wdth.css";
-import "@fontsource-variable/open-sans";
 
 /*
   createStandardPublicClientApplication returns an already initialized instance of PublicClientApplication.
   https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/initialization.md
   */
-createStandardPublicClientApplication(msalConfig)
+await createStandardPublicClientApplication(msalConfig)
   .then((pca) => {
     const router = createRouter({
       routeTree: getRoutes(),

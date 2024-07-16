@@ -3,8 +3,6 @@ import { useAccount, useMsal } from "@azure/msal-react";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 
 import { UserCircleIcon } from "@heroicons/react/24/outline";
-import { HomeIcon } from "@heroicons/react/24/solid";
-import { Link } from "@tanstack/react-router";
 import { createRef, useEffect } from "react";
 import { useGraphUserPhoto } from "../api/useGraphUserPhoto";
 import { loginRequest } from "../infrastructure/auth/authConfig";
@@ -42,11 +40,9 @@ export const UserMenu = () => {
       </MenuButton>
       <MenuItems
         anchor="bottom end"
-        className="px-4 py-2 text-sm text-black origin-top-right border rounded-md drop-shadow-md text-md border-neutral-100 bg-neutral-100">
+        className="mt-2 text-sm origin-top-right border rounded-md drop-shadow-md border-neutral-100 bg-neutral-100">
         <MenuItem>
-          <Link to="/" className="flex items-center gap-3 py-2 no-underline ">
-            <HomeIcon className="size-6" /> Welcome
-          </Link>
+          <LogoutButton />
         </MenuItem>
       </MenuItems>
     </Menu>
@@ -57,15 +53,17 @@ export function LogoutButton() {
   const { instance, inProgress } = useMsal();
   const accounts = instance.getAllAccounts();
   const account = accounts ? accounts[0] : null;
+  const currentMsalOperationInProgress = inProgress;
 
   return (
     <Button
-      disabled={inProgress !== InteractionStatus.None}
+      disabled={currentMsalOperationInProgress !== InteractionStatus.None}
       onClick={async () => {
         try {
           await instance.logoutRedirect({
             ...loginRequest,
             account: account,
+            logoutHint: account?.username,
           } as EndSessionRequest);
         } catch (redirectError) {
           // TODO handle this error
