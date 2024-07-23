@@ -5,7 +5,7 @@ import {
 } from '@azure/msal-react';
 import { CodeBox } from '../components/CodeBox';
 import { useAccessToken } from '../infrastructure/auth/useAccessToken';
-import { decodeToken } from '../infrastructure/utils';
+import { decodeToken } from '../infrastructure/auth/utils';
 import { Page } from './Page';
 
 function Claims() {

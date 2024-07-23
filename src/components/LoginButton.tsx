@@ -9,10 +9,9 @@ import { UserIcon } from '@heroicons/react/24/outline';
 import { loginRequest } from '../infrastructure/auth/authConfig';
 import { Button } from './Button';
 
-export function LoginButton() {
+export const LoginButton = () => {
   const { instance, inProgress } = useMsal();
   const accounts = instance.getAllAccounts();
-  console.dir('accounts: ', accounts);
   const account = accounts ? accounts[0] : null;
   const currentMsalOperationInProgress = inProgress;
 
@@ -31,7 +30,7 @@ export function LoginButton() {
           loginResponse?.account &&
             instance.setActiveAccount(loginResponse.account);
 
-          console.debug('sssoSilent Response', loginResponse);
+          console.debug('ssoSilent Response', loginResponse);
         } catch (silentError) {
           if (silentError instanceof InteractionRequiredAuthError) {
             // Fallback to alternate method when silent call fails.
@@ -60,4 +59,4 @@ export function LoginButton() {
       <UserIcon className="mr-2 size-5" /> Log in
     </Button>
   );
-}
+};

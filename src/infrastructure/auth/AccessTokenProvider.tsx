@@ -35,7 +35,7 @@ export const AccessTokenProvider = ({ children }: { children: ReactNode }) => {
         })
         .catch(async (silentError) => {
           console.error(
-            'acquireTokenSilent silentError0 inProgress',
+            'acquireTokenSilent silentError inProgress',
             silentError,
             currentMsalOperationInProgress,
           );
@@ -51,12 +51,12 @@ export const AccessTokenProvider = ({ children }: { children: ReactNode }) => {
               } as RedirectRequest);
             } catch (redirectError) {
               // TODO handle this error
-              console.error('acquireTokenRedirect error1', redirectError);
+              console.error('acquireTokenRedirect error', redirectError);
               throw redirectError;
             }
           } else {
             // TODO handle this error
-            console.error('acquireTokenSilent error2', silentError);
+            console.error('acquireTokenSilent error', silentError);
             throw silentError;
           }
         });

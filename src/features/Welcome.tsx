@@ -3,8 +3,8 @@ import {
   UnauthenticatedTemplate,
   useAccount,
 } from '@azure/msal-react';
-import { Page } from './Page';
 import { CodeBracketIcon, Cog6ToothIcon } from '@heroicons/react/24/outline';
+import { Page } from './Page';
 
 function Welcome() {
   const account = useAccount();
@@ -51,7 +51,7 @@ function Welcome() {
             <div className="rounded-xl bg-stone-200 px-4 pb-8 pt-1 sm:w-1/2 dark:bg-zinc-800">
               <div className="flex justify-center gap-4 align-middle">
                 <CodeBracketIcon className="w-12" />
-                <h2>SPA authentication</h2>
+                <h2>SPA authentication (MSAL)</h2>
               </div>
               <ul className="list-disc pl-8">
                 <li className="pb-4">

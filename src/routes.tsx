@@ -6,7 +6,6 @@ import Index from './features/Welcome.tsx';
 
 const rootRoute = createRootRoute({
   component: () => {
-    console.debug('rootRoute render!');
     return <Shell />;
   },
 });
