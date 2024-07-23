@@ -1,14 +1,14 @@
-import { createStandardPublicClientApplication } from "@azure/msal-browser";
-import "@fontsource-variable/open-sans";
-import { RouterProvider, createRouter } from "@tanstack/react-router";
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { CustomNavigationClient } from "./CustomNavigationClient.tsx";
-import "./index.css";
-import ErrorBoundary from "./infrastructure/ErrorBoundary.tsx";
-import { MsalWrapper } from "./infrastructure/auth/MsalWrapper.tsx";
-import { msalConfig } from "./infrastructure/auth/authConfig.ts";
-import { getRoutes } from "./routes.tsx";
+import { createStandardPublicClientApplication } from '@azure/msal-browser';
+import '@fontsource-variable/open-sans';
+import { RouterProvider, createRouter } from '@tanstack/react-router';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { CustomNavigationClient } from './CustomNavigationClient.tsx';
+import './index.css';
+import ErrorBoundary from './infrastructure/ErrorBoundary.tsx';
+import { MsalWrapper } from './infrastructure/auth/MsalWrapper.tsx';
+import { msalConfig } from './infrastructure/auth/authConfig.ts';
+import { getRoutes } from './routes.tsx';
 
 /*
   createStandardPublicClientApplication returns an already initialized instance of PublicClientApplication.
@@ -26,27 +26,27 @@ await createStandardPublicClientApplication(msalConfig)
 
     pca.handleRedirectPromise().then((authResult) => {
       if (authResult?.account) {
-        console.debug("Redirect auth result - setActiveAccount: ", authResult);
+        console.debug('Redirect auth result - setActiveAccount: ', authResult);
         pca.setActiveAccount(authResult.account);
       }
     });
 
-    ReactDOM.createRoot(document.getElementById("root")!).render(
+    ReactDOM.createRoot(document.getElementById('root')!).render(
       <React.StrictMode>
         <ErrorBoundary>
           <MsalWrapper msalInstance={pca}>
             <RouterProvider router={router} />
           </MsalWrapper>
         </ErrorBoundary>
-      </React.StrictMode>
+      </React.StrictMode>,
     );
   })
   .catch((unknownError: unknown) => {
-    console.error("Error handling redirect promise", unknownError);
-    ReactDOM.createRoot(document.getElementById("root")!).render(
+    console.error('Error handling redirect promise', unknownError);
+    ReactDOM.createRoot(document.getElementById('root')!).render(
       <>
         <h1>Oops, Something went wrong 😭</h1>
         <p>The app could not be initialised.</p>
-      </>
+      </>,
     );
   });

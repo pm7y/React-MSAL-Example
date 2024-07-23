@@ -22,7 +22,6 @@ npm install @azure/msal-react @azure/msal-browser
 
 https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/samples/msal-react-samples/typescript-sample/README.md
 
-
 ## Setup Entra Id App Registration
 
 To run the app you will need an Azure subscription so that you can create an Entra Id App Registration. You can either do that manually in the Azure portal or by using the Azure CLI and the following steps.
@@ -30,7 +29,7 @@ To run the app you will need an Azure subscription so that you can create an Ent
 1. Install Azure CLI (if you haven't already): Follow the installation instructions for your operating system from the [official Azure CLI documentation](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
 
 2. Sign in to Azure
-  
+
 ```
 az login --tenant "your-tenant-id"
 ```
@@ -54,4 +53,3 @@ az ad app permission add --id "your-app-client-id" --api 00000003-0000-0000-c000
 ```
 
 6. Edit authConfig.ts and replace the clientId with the "appId" from step 3. You should now be able to run the app and login.
-   

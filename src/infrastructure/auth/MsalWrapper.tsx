@@ -1,7 +1,7 @@
-import { IPublicClientApplication } from "@azure/msal-browser";
-import { MsalProvider } from "@azure/msal-react";
-import { ReactNode } from "react";
-import { AccessTokenProvider } from "./AccessTokenProvider";
+import { IPublicClientApplication } from '@azure/msal-browser';
+import { MsalProvider } from '@azure/msal-react';
+import { ReactNode } from 'react';
+import { AccessTokenProvider } from './AccessTokenProvider';
 
 interface IMsalWrapperProps {
   msalInstance: IPublicClientApplication;

@@ -1,12 +1,12 @@
-import { EndSessionRequest, InteractionStatus } from "@azure/msal-browser";
-import { useAccount, useMsal } from "@azure/msal-react";
-import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
+import { EndSessionRequest, InteractionStatus } from '@azure/msal-browser';
+import { useAccount, useMsal } from '@azure/msal-react';
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 
-import { UserCircleIcon } from "@heroicons/react/24/outline";
-import { createRef, useEffect } from "react";
-import { useGraphUserPhoto } from "../api/useGraphUserPhoto";
-import { loginRequest } from "../infrastructure/auth/authConfig";
-import { Button } from "./Button";
+import { UserCircleIcon } from '@heroicons/react/24/outline';
+import { createRef, useEffect } from 'react';
+import { useGraphUserPhoto } from '../api/useGraphUserPhoto';
+import { loginRequest } from '../infrastructure/auth/authConfig';
+import { Button } from './Button';
 
 export const UserMenu = () => {
   const account = useAccount();
@@ -22,11 +22,11 @@ export const UserMenu = () => {
 
   return (
     <Menu>
-      <MenuButton className="inline-flex items-center justify-center gap-1 text-base font-medium leading-none cursor-pointer">
+      <MenuButton className="inline-flex cursor-pointer items-center justify-center gap-1 text-base font-medium leading-none">
         {photoBlobUrl ? (
           <>
             <div
-              className="w-8 mr-2 border border-orange-300 rounded-full aspect-square"
+              className="mr-2 aspect-square w-8 rounded-full border border-orange-300"
               ref={avatarDiv}
             />
             <span className="hidden sm:inline">{userName}</span>
@@ -40,7 +40,8 @@ export const UserMenu = () => {
       </MenuButton>
       <MenuItems
         anchor="bottom end"
-        className="mt-2 text-sm origin-top-right border rounded-md drop-shadow-md border-neutral-100 bg-neutral-100">
+        className="mt-2 origin-top-right rounded-md border border-neutral-100 bg-neutral-100 text-sm drop-shadow-md"
+      >
         <MenuItem>
           <LogoutButton />
         </MenuItem>
@@ -67,10 +68,11 @@ export function LogoutButton() {
           } as EndSessionRequest);
         } catch (redirectError) {
           // TODO handle this error
-          console.error("logout error", redirectError);
+          console.error('logout error', redirectError);
           throw redirectError;
         }
-      }}>
+      }}
+    >
       Log out
     </Button>
   );

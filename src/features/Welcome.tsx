@@ -2,13 +2,13 @@ import {
   AuthenticatedTemplate,
   UnauthenticatedTemplate,
   useAccount,
-} from "@azure/msal-react";
-import { Page } from "./Page";
-import { CodeBracketIcon, Cog6ToothIcon } from "@heroicons/react/24/outline";
+} from '@azure/msal-react';
+import { Page } from './Page';
+import { CodeBracketIcon, Cog6ToothIcon } from '@heroicons/react/24/outline';
 
 function Welcome() {
   const account = useAccount();
-  const userFirstName = account?.idTokenClaims?.name?.split(" ")[0];
+  const userFirstName = account?.idTokenClaims?.name?.split(' ')[0];
 
   return (
     <Page
@@ -47,13 +47,13 @@ function Welcome() {
             to authenticate via the frontend using MSAL. Here are a few of the
             things you might consider when choosing one way or the other.
           </p>
-          <div className="sm:flex sm:justify-between sm:gap-8 text-sm mt-8">
-            <div className="dark:bg-zinc-800 bg-stone-200 rounded-xl pt-1 pb-8 px-4 sm:w-1/2">
+          <div className="mt-8 text-sm sm:flex sm:justify-between sm:gap-8">
+            <div className="rounded-xl bg-stone-200 px-4 pb-8 pt-1 sm:w-1/2 dark:bg-zinc-800">
               <div className="flex justify-center gap-4 align-middle">
                 <CodeBracketIcon className="w-12" />
                 <h2>SPA authentication</h2>
               </div>
-              <ul className="list-disc  pl-8 ">
+              <ul className="list-disc pl-8">
                 <li className="pb-4">
                   <b>Seamless User Experience:</b> You need a smooth user
                   experience with fewer redirects, making the authentication
@@ -71,7 +71,7 @@ function Welcome() {
                 </li>
               </ul>
             </div>
-            <div className="dark:bg-zinc-800 bg-stone-200 rounded-xl pt-1 pb-8 px-4 sm:w-1/2 sm:mt-0 mt-8">
+            <div className="mt-8 rounded-xl bg-stone-200 px-4 pb-8 pt-1 sm:mt-0 sm:w-1/2 dark:bg-zinc-800">
               <div className="flex justify-center gap-4 align-middle">
                 <Cog6ToothIcon className="w-12" />
                 <h2>API authentication</h2>
@@ -99,23 +99,23 @@ function Welcome() {
             </div>
           </div>
           <h2>What Now?</h2>
-          <ul className="list-disc  pl-8">
+          <ul className="list-disc pl-8">
             <li>
-              Take a look at{" "}
+              Take a look at{' '}
               <a
                 target="_blank"
                 rel="noopener"
                 href="https://github.com/pm7y/React-MSAL-Example"
               >
                 the code
-              </a>{" "}
+              </a>{' '}
               for this site,
             </li>
             <li>
               Explore the other pages using the links at the top the page,
             </li>
             <li>
-              Read more about the{" "}
+              Read more about the{' '}
               <a
                 target="_blank"
                 rel="noopener"
@@ -127,7 +127,7 @@ function Welcome() {
             </li>
 
             <li>
-              Look at some other{" "}
+              Look at some other{' '}
               <a
                 target="_blank"
                 rel="noopener"

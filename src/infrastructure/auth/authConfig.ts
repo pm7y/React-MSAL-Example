@@ -2,7 +2,7 @@ import {
   BrowserCacheLocation,
   Configuration,
   LogLevel,
-} from "@azure/msal-browser";
+} from '@azure/msal-browser';
 
 /*
  Config object to be passed to Msal on creation.
@@ -10,11 +10,11 @@ import {
  */
 export const msalConfig: Configuration = {
   auth: {
-    clientId: "3afdd1b3-af46-46cb-9fb5-229f35ea8273",
-    authority: "https://login.microsoftonline.com/common/oauth2/v2.0",
-    redirectUri: "/", // You must register this URI on Azure Portal/App Registration.
+    clientId: '3afdd1b3-af46-46cb-9fb5-229f35ea8273',
+    authority: 'https://login.microsoftonline.com/common/oauth2/v2.0',
+    redirectUri: '/', // You must register this URI on Azure Portal/App Registration.
     navigateToLoginRequestUrl: true,
-    protocolMode: "AAD", // "AAD" for Entra
+    protocolMode: 'AAD', // "AAD" for Entra
   },
   cache: {
     /*
@@ -55,5 +55,5 @@ export const loginRequest = {
   For demo purpose, we're calling the Microsoft Graph API so we use it's default scope.
   This will be different depending on the API you want to call.
   */
-  scopes: ["https://graph.microsoft.com/.default"],
+  scopes: ['https://graph.microsoft.com/.default'],
 };

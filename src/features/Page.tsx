@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 export const Page = ({
   header,
@@ -9,10 +9,10 @@ export const Page = ({
 }) => {
   return (
     <>
-      <header className="px-8 pt-6 pb-8 -mb-2 bg-stone-200 dark:bg-zinc-800 rounded-t-xl">
+      <header className="-mb-2 rounded-t-xl bg-stone-200 px-8 pb-8 pt-6 dark:bg-zinc-800">
         {header}
       </header>
-      <section className="p-8 -mx-0  bg-stone-50 dark:bg-zinc-600 rounded-xl border-2 border-stone-200 dark:border-zinc-800">
+      <section className="-mx-0 rounded-xl border-2 border-stone-200 bg-stone-50 p-8 dark:border-zinc-800 dark:bg-zinc-600">
         {content}
       </section>
     </>

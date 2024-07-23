@@ -1,7 +1,7 @@
-import { useIsAuthenticated } from "@azure/msal-react";
-import { User } from "@microsoft/microsoft-graph-types";
-import { useEffect, useState } from "react";
-import { useAccessToken } from "../infrastructure/auth/useAccessToken";
+import { useIsAuthenticated } from '@azure/msal-react';
+import { User } from '@microsoft/microsoft-graph-types';
+import { useEffect, useState } from 'react';
+import { useAccessToken } from '../infrastructure/auth/useAccessToken';
 
 export function useGraphUserDetails() {
   const isAuthenticated = useIsAuthenticated();
@@ -14,10 +14,10 @@ export function useGraphUserDetails() {
       return;
     }
 
-    const request = new Request("https://graph.microsoft.com/v1.0/me", {
-      method: "GET",
+    const request = new Request('https://graph.microsoft.com/v1.0/me', {
+      method: 'GET',
       headers: new Headers({
-        Authorization: "Bearer " + accessToken,
+        Authorization: 'Bearer ' + accessToken,
       }),
     });
 

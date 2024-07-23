@@ -1,5 +1,5 @@
-import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
-import React, { useEffect } from "react";
+import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
+import React, { useEffect } from 'react';
 
 export function Button({
   children,
@@ -14,7 +14,7 @@ export function Button({
     <button
       type="button"
       disabled={disabled}
-      className="px-4 py-2.5 leading-none flex items-center text-black dark:text-white justify-center text-base font-medium transition-colors bg-stone-100 border border-transparent rounded-md cursor-pointer hover:border-gray-300 dark:hover:border-gray-600 duration-250 dark:bg-stone-800"
+      className="duration-250 flex cursor-pointer items-center justify-center rounded-md border border-transparent bg-stone-100 px-4 py-2.5 text-base font-medium leading-none text-black transition-colors hover:border-gray-300 dark:bg-stone-800 dark:text-white dark:hover:border-gray-600"
       onClick={onClick}
     >
       {children}
@@ -28,22 +28,22 @@ export function ToggleThemeButton({
   readonly disabled?: boolean;
 }) {
   const [themeMode, setThemeMode] = React.useState(
-    localStorage.getItem("themeMode") ?? "dark"
+    localStorage.getItem('themeMode') ?? 'dark',
   );
 
   const toggleThemeHandler = () => {
-    const newThemeMode = themeMode === "dark" ? "light" : "dark";
+    const newThemeMode = themeMode === 'dark' ? 'light' : 'dark';
 
-    localStorage.setItem("themeMode", newThemeMode);
+    localStorage.setItem('themeMode', newThemeMode);
     setThemeMode(newThemeMode);
-    document.querySelector("html")?.classList.toggle("dark");
+    document.querySelector('html')?.classList.toggle('dark');
   };
 
   useEffect(() => {
-    if (themeMode === "dark") {
-      document.querySelector("html")?.classList.add("dark");
+    if (themeMode === 'dark') {
+      document.querySelector('html')?.classList.add('dark');
     } else {
-      document.querySelector("html")?.classList.remove("dark");
+      document.querySelector('html')?.classList.remove('dark');
     }
   }, [themeMode]);
 
@@ -52,9 +52,9 @@ export function ToggleThemeButton({
       type="button"
       disabled={disabled}
       onClick={() => toggleThemeHandler()}
-      className="flex items-center gap-2 hover:scale-102 active:scale-98"
+      className="hover:scale-102 active:scale-98 flex items-center gap-2"
     >
-      {themeMode === "dark" ? (
+      {themeMode === 'dark' ? (
         <SunIcon className="size-5" />
       ) : (
         <MoonIcon className="size-5" />

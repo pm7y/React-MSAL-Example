@@ -1,5 +1,5 @@
-import { NavigationClient, NavigationOptions } from "@azure/msal-browser";
-import { AnyRouter } from "@tanstack/react-router";
+import { NavigationClient, NavigationOptions } from '@azure/msal-browser';
+import { AnyRouter } from '@tanstack/react-router';
 
 export class CustomNavigationClient extends NavigationClient {
   private readonly router: AnyRouter;
@@ -11,14 +11,14 @@ export class CustomNavigationClient extends NavigationClient {
 
   async navigateInternal(
     url: string,
-    options: NavigationOptions
+    options: NavigationOptions,
   ): Promise<boolean> {
-    const relativePath = url.replace(window.location.origin, "");
+    const relativePath = url.replace(window.location.origin, '');
 
     console.debug(
-      "CustomNavigationClient navigating to: ",
+      'CustomNavigationClient navigating to: ',
       relativePath,
-      options
+      options,
     );
 
     if (options.noHistory) {

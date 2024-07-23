@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  font-family: "Open Sans Variable", Inter, system-ui, Helvetica, Arial,
+  font-family: 'Open Sans Variable', Inter, system-ui, Helvetica, Arial,
     sans-serif;
   color-scheme: light dark;
 }
@@ -14,7 +14,7 @@ html {
 
 @layer base {
   body {
-    @apply flex justify-center w-full px-4 overflow-x-hidden text-lg text-blue-900 bg-stone-600 always-show-scrollbar custom-scrollbar dark:bg-zinc-900 dark:text-zinc-100;
+    @apply always-show-scrollbar custom-scrollbar flex w-full justify-center overflow-x-hidden bg-stone-600 px-4 text-lg text-blue-900 dark:bg-zinc-900 dark:text-zinc-100;
 
     #root {
       @apply min-w-[320px] max-w-[960px];
@@ -22,7 +22,7 @@ html {
   }
 
   a {
-    @apply text-blue-800 underline hover:text-blue-950 visited:text-blue-800 visited:hover:text-blue-950 dark:text-stone-200 dark:hover:text-gray-300 dark:visited:text-gray-200 dark:visited:hover:text-gray-300;
+    @apply text-blue-800 underline visited:text-blue-800 hover:text-blue-950 visited:hover:text-blue-950 dark:text-stone-200 dark:visited:text-gray-200 dark:hover:text-gray-300 dark:visited:hover:text-gray-300;
   }
 
   nav,

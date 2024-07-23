@@ -2,10 +2,10 @@ import {
   InteractionRequiredAuthError,
   InteractionStatus,
   RedirectRequest,
-} from "@azure/msal-browser";
-import { useMsal } from "@azure/msal-react";
-import { ReactNode, createContext, useEffect, useState } from "react";
-import { loginRequest } from "./authConfig";
+} from '@azure/msal-browser';
+import { useMsal } from '@azure/msal-react';
+import { ReactNode, createContext, useEffect, useState } from 'react';
+import { loginRequest } from './authConfig';
 
 let pageLoad = true;
 
@@ -30,14 +30,14 @@ export const AccessTokenProvider = ({ children }: { children: ReactNode }) => {
         })
         .then((response) => {
           pageLoad = false;
-          console.debug("acquireTokenSilent response: ", response);
+          console.debug('acquireTokenSilent response: ', response);
           setAccessToken(response.accessToken);
         })
         .catch(async (silentError) => {
           console.error(
-            "acquireTokenSilent silentError0 inProgress",
+            'acquireTokenSilent silentError0 inProgress',
             silentError,
-            currentMsalOperationInProgress
+            currentMsalOperationInProgress,
           );
           if (silentError instanceof InteractionRequiredAuthError) {
             // Fallback to alternate method when silent call fails.
@@ -51,12 +51,12 @@ export const AccessTokenProvider = ({ children }: { children: ReactNode }) => {
               } as RedirectRequest);
             } catch (redirectError) {
               // TODO handle this error
-              console.error("acquireTokenRedirect error1", redirectError);
+              console.error('acquireTokenRedirect error1', redirectError);
               throw redirectError;
             }
           } else {
             // TODO handle this error
-            console.error("acquireTokenSilent error2", silentError);
+            console.error('acquireTokenSilent error2', silentError);
             throw silentError;
           }
         });

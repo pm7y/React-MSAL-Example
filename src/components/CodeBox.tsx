@@ -1,4 +1,4 @@
-import { CopyButton } from "./CopyButton";
+import { CopyButton } from './CopyButton';
 
 export function CodeBox({
   code,
@@ -12,13 +12,13 @@ export function CodeBox({
   const copyText = copyValue ?? code;
 
   return (
-    <div className="px-4 pt-2 pb-4 my-6 dark:bg-stone-900 bg-stone-200 rounded-2xl">
+    <div className="my-6 rounded-2xl bg-stone-200 px-4 pb-4 pt-2 dark:bg-stone-900">
       {copyText && (
         <div className="flex justify-end">
-          <CopyButton value={copyText} label={copyLabel ?? "Copy"} />
+          <CopyButton value={copyText} label={copyLabel ?? 'Copy'} />
         </div>
       )}
-      <pre className="pb-4 overflow-x-auto text-sm custom-scrollbar">
+      <pre className="custom-scrollbar overflow-x-auto pb-4 text-sm">
         {code}
       </pre>
     </div>

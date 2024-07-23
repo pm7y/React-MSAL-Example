@@ -2,11 +2,11 @@ import {
   AuthenticatedTemplate,
   UnauthenticatedTemplate,
   useAccount,
-} from "@azure/msal-react";
-import { CodeBox } from "../components/CodeBox";
-import { useAccessToken } from "../infrastructure/auth/useAccessToken";
-import { decodeToken } from "../infrastructure/utils";
-import { Page } from "./Page";
+} from '@azure/msal-react';
+import { CodeBox } from '../components/CodeBox';
+import { useAccessToken } from '../infrastructure/auth/useAccessToken';
+import { decodeToken } from '../infrastructure/utils';
+import { Page } from './Page';
 
 function Claims() {
   const account = useAccount();
@@ -39,7 +39,7 @@ function Claims() {
                 <CodeBox
                   code={JSON.stringify(decodedIdToken, null, 2)}
                   copyValue={account?.idToken}
-                  copyLabel={"Copy Id Token"}
+                  copyLabel={'Copy Id Token'}
                 />
               )}
               <h2>Access Token Claims</h2>
@@ -52,7 +52,7 @@ function Claims() {
                 <CodeBox
                   code={JSON.stringify(decodedAccessToken, null, 2)}
                   copyValue={accessToken}
-                  copyLabel={"Copy Access Token"}
+                  copyLabel={'Copy Access Token'}
                 />
               )}
             </>

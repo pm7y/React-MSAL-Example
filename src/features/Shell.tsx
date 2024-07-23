@@ -1,15 +1,15 @@
-import { InteractionStatus } from "@azure/msal-browser";
-import { useIsAuthenticated, useMsal } from "@azure/msal-react";
+import { InteractionStatus } from '@azure/msal-browser';
+import { useIsAuthenticated, useMsal } from '@azure/msal-react';
 import {
   ArrowsUpDownIcon,
   HomeIcon,
   UserIcon,
-} from "@heroicons/react/24/outline";
-import { Link, Outlet } from "@tanstack/react-router";
-import { ToggleThemeButton } from "../components/Button";
-import { LoginButton } from "../components/LoginButton";
-import { UserMenu } from "../components/LogoutButton";
-import { Spinner } from "../components/Spinner";
+} from '@heroicons/react/24/outline';
+import { Link, Outlet } from '@tanstack/react-router';
+import { ToggleThemeButton } from '../components/Button';
+import { LoginButton } from '../components/LoginButton';
+import { UserMenu } from '../components/LogoutButton';
+import { Spinner } from '../components/Spinner';
 
 export function Shell() {
   const isAuthenticated = useIsAuthenticated();
@@ -18,17 +18,17 @@ export function Shell() {
 
   return (
     <>
-      <header className="w-full py-4 !text-stone-200 ">
-        <nav className="flex items-center justify-between w-full">
-          <div className="flex items-center justify-between ">
-            <ul className="flex flex-wrap p-0 mr-1 space-x-4 text-sm list-none ">
-              <li className="after:content-['|'] after:ml-4  after:text-gray-500 flex items-center  ">
-                <Link to="/" className="flex items-center gap-3 no-underline ">
+      <header className="w-full py-4 !text-stone-200">
+        <nav className="flex w-full items-center justify-between">
+          <div className="flex items-center justify-between">
+            <ul className="mr-1 flex list-none flex-wrap space-x-4 p-0 text-sm">
+              <li className="flex items-center after:ml-4 after:text-gray-500 after:content-['|']">
+                <Link to="/" className="flex items-center gap-3 no-underline">
                   <HomeIcon className="size-6" />
-                  <span className="hidden sm:inline ">Welcome</span>
+                  <span className="hidden sm:inline">Welcome</span>
                 </Link>
               </li>
-              <li className="after:content-['|'] after:ml-4 after:text-gray-500 flex items-center">
+              <li className="flex items-center after:ml-4 after:text-gray-500 after:content-['|']">
                 <Link
                   to="/claims"
                   className="flex items-center gap-3 no-underline"
@@ -64,7 +64,7 @@ export function Shell() {
       </main>
       {currentMsalOperationInProgress !== InteractionStatus.None && <Spinner />}
 
-      <footer className="flex items-center justify-center px-8 py-2 mt-2 text-xs text-gray-200">
+      <footer className="mt-2 flex items-center justify-center px-8 py-2 text-xs text-gray-200">
         View source on&nbsp;
         <a
           target="_blank"

@@ -1,11 +1,11 @@
 import {
   AuthenticatedTemplate,
   UnauthenticatedTemplate,
-} from "@azure/msal-react";
-import { useGraphUserDetails } from "../api/useGraphUserDetails";
-import { CodeBox } from "../components/CodeBox";
-import { Spinner } from "../components/Spinner";
-import { Page } from "./Page";
+} from '@azure/msal-react';
+import { useGraphUserDetails } from '../api/useGraphUserDetails';
+import { CodeBox } from '../components/CodeBox';
+import { Spinner } from '../components/Spinner';
+import { Page } from './Page';
 
 function MsGraph() {
   const { user, isLoading } = useGraphUserDetails();
@@ -17,14 +17,14 @@ function MsGraph() {
         <>
           <p>
             Once you have an access token you can use that token to call an API.
-            This is a simple example of calling the{" "}
+            This is a simple example of calling the{' '}
             <a
               href="https://developer.microsoft.com/en-us/graph/graph-explorer"
               rel="noopener"
               target="_blank"
             >
               Microsoft Graph API
-            </a>{" "}
+            </a>{' '}
             to retrieve some profile data about the user including their photo
             if there is one.
           </p>
@@ -33,7 +33,7 @@ function MsGraph() {
           </UnauthenticatedTemplate>
           <AuthenticatedTemplate>
             <p>
-              Note:{" "}
+              Note:{' '}
               <i>
                 The amount of fields populated below will depend on what has
                 been populated in Entra Id

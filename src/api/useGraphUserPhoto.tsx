@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { useAccessToken } from "../infrastructure/auth/useAccessToken";
+import { useEffect, useState } from 'react';
+import { useAccessToken } from '../infrastructure/auth/useAccessToken';
 
 export function useGraphUserPhoto() {
   const accessToken = useAccessToken();
   const [photoBlobUrl, setPhotoBlobUrl] = useState<string | undefined>(
-    undefined
+    undefined,
   );
 
   useEffect(() => {
@@ -13,14 +13,14 @@ export function useGraphUserPhoto() {
     }
 
     const request = new Request(
-      "https://graph.microsoft.com/v1.0/me/photos/96x96/$value",
+      'https://graph.microsoft.com/v1.0/me/photos/96x96/$value',
       {
-        method: "GET",
+        method: 'GET',
         headers: new Headers({
-          Authorization: "Bearer " + accessToken,
-          "Content-Type": "image/jpg",
+          Authorization: 'Bearer ' + accessToken,
+          'Content-Type': 'image/jpg',
         }),
-      }
+      },
     );
 
     fetch(request)

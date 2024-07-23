@@ -1,12 +1,12 @@
-import { createRootRoute, createRoute } from "@tanstack/react-router";
-import Claims from "./features/Claims.tsx";
-import MsGraph from "./features/MsGraph.tsx";
-import { Shell } from "./features/Shell.tsx";
-import Index from "./features/Welcome.tsx";
+import { createRootRoute, createRoute } from '@tanstack/react-router';
+import Claims from './features/Claims.tsx';
+import MsGraph from './features/MsGraph.tsx';
+import { Shell } from './features/Shell.tsx';
+import Index from './features/Welcome.tsx';
 
 const rootRoute = createRootRoute({
   component: () => {
-    console.debug("rootRoute render!");
+    console.debug('rootRoute render!');
     return <Shell />;
   },
 });
@@ -15,17 +15,17 @@ export function getRoutes() {
   const routes = [
     createRoute({
       getParentRoute: () => rootRoute,
-      path: "/",
+      path: '/',
       component: () => <Index />,
     }),
     createRoute({
       getParentRoute: () => rootRoute,
-      path: "/claims",
+      path: '/claims',
       component: () => <Claims />,
     }),
     createRoute({
       getParentRoute: () => rootRoute,
-      path: "/msgraph",
+      path: '/msgraph',
       component: () => <MsGraph />,
     }),
   ];
